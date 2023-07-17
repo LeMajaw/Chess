@@ -7,7 +7,7 @@ from data.classes.pieces.Knight import Knight
 from data.classes.pieces.Queen import Queen
 from data.classes.pieces.King import King
 from data.classes.pieces.Pawn import Pawn
-
+from data.classes.pieces.Samurai import Samurai
 
 # Game state checker
 class Board:
@@ -22,12 +22,12 @@ class Board:
 		# try making it chess.board.fen()
 		self.config = [
 			['bR', 'bN', 'bB', 'bQ', 'bK', 'bB', 'bN', 'bR'],
-			['bP', 'bP', 'bP', 'bP', 'bP', 'bP', 'bP', 'bP'],
+			['bP', 'bP', 'bP', 'bP', 'bS', 'bP', 'bP', 'bP'],
 			['','','','','','','',''],
 			['','','','','','','',''],
 			['','','','','','','',''],
 			['','','','','','','',''],
-			['wP', 'wP', 'wP', 'wP', 'wP', 'wP', 'wP', 'wP'],
+			['wP', 'wP', 'wP', 'wP', 'wS', 'wP', 'wP', 'wP'],
 			['wR', 'wN', 'wB', 'wQ', 'wK', 'wB', 'wN', 'wR'],
 		]
 
@@ -92,6 +92,11 @@ class Board:
 
 					elif piece[1] == 'P':
 						square.occupying_piece = Pawn(
+							(x, y), 'white' if piece[0] == 'w' else 'black', self
+						)
+
+					elif piece[1] == 'S':
+						square.occupying_piece = Samurai(
 							(x, y), 'white' if piece[0] == 'w' else 'black', self
 						)
 
